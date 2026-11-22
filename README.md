@@ -3,12 +3,24 @@
 A macOS menu-bar app that remembers the keyboard layout separately for each app.
 If you choose Hebrew in one app and English in another, each app gets its own layout back when you switch to it.
 
-## Build & run
+## Install (no building needed)
+
+1. Download `LangPerApp.zip` from the [latest release](https://github.com/guyozeri/LangPerApp/releases/latest).
+2. Unzip it and drag `LangPerApp.app` into **Applications**.
+3. Open it. macOS will say it can't verify the app (it isn't notarized). Click **Done**, then go to **System Settings → Privacy & Security** and click **Open Anyway**.
+   - If macOS says the app "is damaged", run: `xattr -dr com.apple.quarantine /Applications/LangPerApp.app`
+4. From the keyboard icon in the menu bar, turn on **Launch at Login**.
+
+Works on Apple Silicon and Intel Macs, macOS 13+.
+
+## Build from source
 
 ```sh
 ./build.sh
 open build/LangPerApp.app
 ```
+
+This also creates `build/LangPerApp.zip` (universal binary) for distribution.
 
 Requires macOS 13+ and the Swift toolchain (Xcode or Command Line Tools). No Accessibility permission is needed.
 
