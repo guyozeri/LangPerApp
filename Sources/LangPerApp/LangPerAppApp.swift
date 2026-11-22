@@ -4,6 +4,7 @@ import SwiftUI
 struct LangPerAppApp: App {
     @StateObject private var store: AppLayoutStore
     @StateObject private var switcher: LayoutSwitcher
+    @StateObject private var settingsMonitor = SystemSettingsMonitor()
 
     init() {
         let store = AppLayoutStore()
@@ -12,8 +13,11 @@ struct LangPerAppApp: App {
     }
 
     var body: some Scene {
-        MenuBarExtra("LangPerApp", systemImage: "keyboard") {
-            MenuView(store: store, switcher: switcher)
+        MenuBarExtra(
+            "LangPerApp",
+            systemImage: settingsMonitor.autoSwitchEnabled ? "exclamationmark.triangle" : "keyboard"
+        ) {
+            MenuView(store: store, switcher: switcher, settingsMonitor: settingsMonitor)
         }
         .menuBarExtraStyle(.menu)
     }

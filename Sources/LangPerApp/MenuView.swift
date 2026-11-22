@@ -5,9 +5,16 @@ import SwiftUI
 struct MenuView: View {
     @ObservedObject var store: AppLayoutStore
     @ObservedObject var switcher: LayoutSwitcher
+    @ObservedObject var settingsMonitor: SystemSettingsMonitor
     @State private var launchAtLogin = SMAppService.mainApp.status == .enabled
 
     var body: some View {
+        if settingsMonitor.autoSwitchEnabled {
+            Button("⚠️ Turn off macOS auto-switching…") { settingsMonitor.openKeyboardSettings() }
+            Text("Then turn off \"Automatically switch to a document's input source\"")
+            Divider()
+        }
+
         Toggle("Enabled", isOn: $store.enabled)
 
         Divider()
@@ -53,8 +60,6 @@ struct MenuView: View {
                 launchAtLogin = SMAppService.mainApp.status == .enabled
             }
         ))
-
-        Text("Tip: turn off macOS \"Automatically switch to a document's input source\"")
 
         Divider()
 

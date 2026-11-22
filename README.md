@@ -34,7 +34,7 @@ To install, copy `build/LangPerApp.app` to `/Applications`, then turn on **Launc
 
 ## Important
 
-Turn off **System Settings → Keyboard → Input Sources → Edit… → "Automatically switch to a document's input source"**, or macOS and this app will fight over the layout.
+Turn off **System Settings → Keyboard → Input Sources → Edit… → "Automatically switch to a document's input source"**, or macOS and this app will fight over the layout. LangPerApp detects this setting: while it's on, the menu-bar icon shows ⚠️ and an alert offers to open the Input Sources settings directly.
 
 ## Debug logs
 
